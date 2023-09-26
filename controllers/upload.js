@@ -10,7 +10,7 @@ const postIMG = async (req = request, res = response) => {
     uploadSingleImage(req, res, async (err) => {
         if (err) {
             return res.status(400).json({
-                error: "Invalid file type",
+                error: "An error has ocurred",
                 detail: err
             });
         }
