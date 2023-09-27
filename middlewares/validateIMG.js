@@ -1,4 +1,6 @@
-const validateIMG = async (req, res, next) => {
+const {request, response} = require('express')
+
+const validateIMG = async (req = request, res=response, next) => {
     const image = req.files?.image
 
     if (!image) {

@@ -8,7 +8,7 @@ const postIMG = async (req = request, res = response) => {
     const newImgName = encodeURIComponent(`${shortID.generate()}-${name.trim()}`);
     const img = new ImageModel({name: newImgName, data, size, mimetype});
 
-    const link = `${req.headers.host}/img/${newImgName}`
+    const link = `${req.protocol}://${req.headers.host}/img/${newImgName}`
 
     try {
         await img.save();
@@ -27,7 +27,6 @@ const postIMG = async (req = request, res = response) => {
 
 const getIMG = async (req = request, res = response) => {
     const img = encodeURIComponent(req.params.img);
-    console.log(img)
     const imgFound = await ImageModel.findOne({name: img});
 
     if (!imgFound) {
