@@ -4,7 +4,6 @@ const shortID = require('shortid');
 
 const postIMG = async (req = request, res = response) => {
     const {name, data, size, mimetype} = req.files.image;
-    console.log(req.files.image)
 
     const newImgName = encodeURIComponent(`${shortID.generate()}-${name.trim()}`);
     const img = new ImageModel({name: newImgName, data, size, mimetype});
@@ -32,7 +31,7 @@ const getIMG = async (req = request, res = response) => {
     const imgFound = await ImageModel.findOne({name: img});
 
     if (!imgFound) {
-        return res.status(400).json({
+        return res.status(404).json({
             error: 'Image not found'
         })
     }
