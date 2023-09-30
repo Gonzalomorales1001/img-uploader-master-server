@@ -14,6 +14,7 @@ const postIMG = async (req = request, res = response) => {
         await img.save();
         res.json({
             msg: 'Image uploaded successfully!',
+            name,
             link
         });
     } catch (error) {
