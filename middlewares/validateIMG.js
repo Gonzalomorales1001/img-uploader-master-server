@@ -20,7 +20,7 @@ const validateIMG = async (req = request, res=response, next) => {
         //validate size (max 4MB)
         if (image.size > 16000000) {
             return res.status(400).json({
-                error: 'Image size cant be larger than 16MB'
+                error: 'Image size cannot be longer than 16MB'
             })
         }
 
